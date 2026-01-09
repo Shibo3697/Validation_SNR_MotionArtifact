@@ -127,3 +127,12 @@ set(gca, 'FontSize', 11, 'FontWeight', 'bold');
 set(findobj(gca,'type','line'), 'LineWidth', 1.5);
 grid on;
 ylim([-0.5, max(data_MR)*1.2]);
+
+% t-test
+%  Motion vs resting
+[h1, p_val_rest] = ttest2(results.Motion.MotionRatio, results.Rest.MotionRatio, 'Vartype', 'unequal');
+%  Motion vs Task 
+[h2, p_val_task] = ttest2(results.Motion.MotionRatio, results.Task.MotionRatio, 'Vartype', 'unequal');
+
+fprintf('Motion vs Rest: p = %.5f\n', p_val_rest);
+fprintf('Motion vs Task: p = %.5f\n', p_val_task);
