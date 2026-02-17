@@ -11,7 +11,7 @@ function addSigLine(x1, x2, y, h, label)
 end
 
 %% Path
-dataFolder   = 'C:\Users\admin\Desktop\Light Weight Multi-Distance fNIRS Dataset';
+dataFolder   = 'C:\Users\t243f765\Desktop\Light Weight Multi-Distance fNIRS Dataset_';
 filePattern  = fullfile(dataFolder, '**', '*.snirf');
 snirfFiles   = dir(filePattern);
 
@@ -311,8 +311,8 @@ addSigLine(2, 3, y + 0.2, h, '***'); % ball vs Motion
 
 %% Channel Distance Analysis (Paired T-test)
 % 1. Separate all SNR into shorter and longer channel
-all_SNR_Short = [final_stats.Rest.SNR_Short; final_stats.Task.SNR_Short; final_stats.Motion.SNR_Short];
-all_SNR_Long  = [final_stats.Rest.SNR_Long;  final_stats.Task.SNR_Long;  final_stats.Motion.SNR_Long];
+all_SNR_Short = [final_stats.Rest.SNR_Short];
+all_SNR_Long  = [final_stats.Rest.SNR_Long];
 
 % 2. Calculate Differences (Short - Long)
 diff_SNR = all_SNR_Short - all_SNR_Long;
@@ -340,7 +340,7 @@ boxplot(data_box_snr, 'Labels', {'Shorter', 'Longer'}, 'Symbol', 'o');
 title('SNR Comparison', 'FontSize', 16, 'FontWeight', 'bold');
 ylabel('SNR (dB)', 'FontSize', 16, 'FontWeight', 'bold');
 grid on;
-ylim([15 45]); 
+ylim([20 45]); 
 
 y_lims = ylim;
 y_max = max(data_box_snr(:));
